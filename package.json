@@ -1,0 +1,36 @@
+{
+  "name": "scrape-it",
+  "version": "1.0.0",
+  "description": "Web scraper, storing scrapes in MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leelandmiller/scrape-it.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "web",
+    "scraper"
+  ],
+  "author": "leelandmiller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leelandmiller/scrape-it/issues"
+  },
+  "homepage": "https://github.com/leelandmiller/scrape-it#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bootstrap": "^4.0.0-beta",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.10",
+    "method-override": "^2.3.9",
+    "mongoose": "^4.11.7",
+    "request": "^2.81.0"
+  }
+}
