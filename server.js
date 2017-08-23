@@ -5,6 +5,7 @@ const request = require('request');
 const cheerio = require('cheerio');
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
+const methodOverride = require('method-override');
 
 mongoose.Promise = Promise;
 
@@ -38,6 +39,9 @@ db.on("error", err => console.log(`Mongoose Error: ${err}`) );
 
 // Once logged in to the db through mongoose, log a success message
 db.once("open", () => console.log('Mongoose connection successful') );
+
+//---- routes ----//
+require('./routes/htmlRoutes')(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`App running: localhost:${PORT}`));
