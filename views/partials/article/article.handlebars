@@ -1,0 +1,22 @@
+{{!-- <div class="col-md-5 ml-auto mr-auto"> --}}
+    <div class="card mb-3">
+        <img class="card-img-top" src="{{img}}" alt="Card image cap">
+        <div class="card-body bg-card text-white">
+            <div class="card-title-holder">
+                <h6 class="card-title">{{title}}</h6>
+            </div>
+            <p class="card-text text-muted">
+                {{description}}
+            </p>
+            <p class="card-text">
+                <small class="text-muted">
+                    BY: {{author}} on {{date}}
+                </small>
+            </p>
+            <div class="d-flex justify-content-between">
+                <a href="http://www.sciencemag.org{{link}}" target="_blank" class="text-white"><span class="ion-android-open"></span> View Article</a>
+                <a href="/article/{{_id}}" class="text-white"><span class="ion-android-chat"></span> Comment</a>
+            </div>
+        </div>
+    </div>
+{{!-- </div> --}}

@@ -24,12 +24,13 @@ app.use(bodyParser.json({
 
 app.use(methodOverride("_method"));
 
-app.use(express.static('public'));
-app.use('bootstrap', express.static(__dirname + "/node_modules/"))
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use('/public', express.static(__dirname + '/public'));
+app.use('/bootstrap', express.static(__dirname + "/node_modules/bootstrap/dist"));
+app.use('/jquery', express.static(__dirname + "/node_modules/jquery/dist"));
 
 mongoose.connect('mongodb://localhost/mongooseWebScraperDB');
 let db = mongoose.connection;
