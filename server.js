@@ -32,7 +32,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use('/bootstrap', express.static(__dirname + "/node_modules/bootstrap/dist"));
 app.use('/jquery', express.static(__dirname + "/node_modules/jquery/dist"));
 
-mongoose.connect('mongodb://localhost/mongooseWebScraperDB');
+mongoose.connect('mongodb://heroku_zm5m4hmp:k5akd0fhbbn3k73fgps3iqlggn@ds041841.mlab.com:41841/heroku_zm5m4hmp');
 let db = mongoose.connection;
 
 // Show any mongoose errors
