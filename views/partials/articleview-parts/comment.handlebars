@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between">
+    <div class="comment">
+        <h4>{{title}}</h4>
+        <p>{{body}}</p>
+        <small>By: {{name}}</small>
+    </div>
+    <div class="delete-comment-container">
+        <form action="/deletecomment/{{@root.article._id}}/{{_id}}" method="post">
+            <button class="btn btn-outline-danger">
+                <span class="ion-close-round"></span>
+            </button>
+        </form>
+    </div>
+</div>

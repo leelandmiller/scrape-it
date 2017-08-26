@@ -1,5 +1,5 @@
 const Article = require('../models/Article');
-const Comment = require('../models/Comment');
+const Comments = require('../models/Comment');
 
 module.exports = app => {
 
@@ -28,12 +28,61 @@ module.exports = app => {
     app.get('/article/:id', (req, res) => {
         let articleId = req.params.id;
 
-        Article.findOne({ _id: articleId }, (err, article) => {
+        Article.findOne({ _id: articleId })
+        .populate({
+            'path': 'comments',
+            'options': {
+                'sort': {
+                    'timestamp': -1
+                }
+            }
+        })
+        .exec((err, article) => {
             if (err) {
                 console.log('THROW ERR', err.msg);
             } else {
                 res.render('articleview', { article });
             }
         });
+    });
+
+    app.post('/addcomment/:articleId', (req, res) => {
+        // console.log('articleid', req.params.articleId);
+        // console.log(req.body);
+
+        let newComment = new Comments(req.body);
+
+        newComment.save((err, comment) => {
+            if (err) {
+                console.log(err.msg);
+            } else {
+                Article.update({
+                    '_id': req.params.articleId
+                }, {
+                    '$push': {
+                        'comments': comment._id
+                    }
+                }, (err, newDoc) => {
+                    res.redirect(`/article/${req.params.articleId}`);
+                });
+            }
+        });
+    });
+
+    app.post('/deletecomment/:articleId/:commentId', (req, res) => {
+        Article.update({
+            '_id': req.params.articleId
+        }, {
+            '$pull': {
+                'comments': req.params.commentId
+            }
+        }, (err, removedComment) => {
+            Comments.remove({
+                '_id': req.params.commentId
+            }, (err, removed) => {
+                console.log(removed);
+                res.redirect(`/article/${req.params.articleId}`);
+            });
+        })
     });
 };
